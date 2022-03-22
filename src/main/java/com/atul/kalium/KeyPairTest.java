@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Arrays;
+import java.util.Base64;
 
 import org.abstractj.kalium.keys.KeyPair;
 
@@ -43,8 +44,8 @@ public class KeyPairTest {
             System.out.println("private:" + key.getPrivateKey());
             System.out.println("public:" + key.getPublicKey());
             
-            System.out.println("private:" + HEX.encode(key.getPrivateKey().toBytes()));
-            System.out.println("public:" + HEX.encode(key.getPublicKey().toBytes()));
+            System.out.println("private:" + new String(Base64.getEncoder().encode(key.getPrivateKey().toBytes())));
+            System.out.println("public:" + new String(Base64.getEncoder().encode(key.getPublicKey().toBytes())));
 
         } catch (Exception e) {
             fail("Should return a valid key size");
